@@ -30,6 +30,7 @@ if which vim;then
     fi
 else
     echo "vim not install"
+    exit 1
 fi
 cd "${current_dir}"
 cp tmux.conf $HOME/.tmux.conf
@@ -38,8 +39,10 @@ chmod +x $HOME/up.sh
 cp zshrc $HOME/.zshrc
 if which zhs;then
     chsh -s $(which zsh)
+    sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     source $HOME/.zshrc
 else
     echo "zsh not install"
     exit 1
 fi
+
